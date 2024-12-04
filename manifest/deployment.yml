@@ -38,3 +38,29 @@ spec:
             secretKeyRef:
               name: database-credentials
               key: API_KEY
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gpt-frontend
+  namespace: melissa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gpt-frontend
+  template:
+    metadata:
+      labels:
+        app: api-gpt-frontend
+    spec:
+      containers:
+      - name: api-gpt-frontend
+        image: melissapanduro/front_docker  # Reemplaza con tu imagen Docker del frontend
+        env:
+        - name: API_BACKEND
+          valueFrom:
+            secretKeyRef:
+              name: database-credentials
+              key: API_BACKEND  # La clave en el Secret para API_BACKEND

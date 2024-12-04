@@ -24,16 +24,16 @@ metadata:
 kubectl config view --minify | grep namespace
 
 # cambiar un namespace en uso por "default" a "hernan"
-kubectl config set-context --current --namespace=hernan
+kubectl config set-context --current --namespace=melissa
 
 # consultar todos los recursos de un namespace "hernan"
 kubectl get all -n hernan
 
 # consultar todos los recursos y secret de un namespace "hernan"
-kubectl get all,secrets -n hernan
+kubectl get all,secrets -n melissa
 
 # listar services del namespace "hernan"
-minikube service api-gpt-be -n hernan
+minikube service api-gpt-be -n melissa
 minikube service list
 
 # probar el microservicio dentro del clúster con curl
@@ -41,7 +41,7 @@ curl http://192.168.49.2:30001/api/active
 curl http://192.168.49.2:30001/api/id/1
 
 # crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
-kubectl port-forward service/content-moderator-be 8085:30001
-
+kubectl port-forward service/api-gpt-be 8086:30001
+kubectl port-forward service/api-gpt-frontend 4200:30002
 # ver los logs del pod (logs del proyecto)
 kubectl logs nombre-pod
