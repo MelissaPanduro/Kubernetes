@@ -1,7 +1,7 @@
 # consultar versión de minikube
 minikube version
 
-# iniciar clúster kubernetes
+# 1iniciar clúster kubernetes
 minikube start
 
 # listar namespace
@@ -23,7 +23,7 @@ metadata:
 # consultar namespace en uso por "default"
 kubectl config view --minify | grep namespace
 
-# cambiar un namespace en uso por "default" a "hernan"
+# 3cambiar un namespace en uso por "default" a "hernan"
 kubectl config set-context --current --namespace=melissa
 
 # consultar todos los recursos de un namespace "hernan"
@@ -40,8 +40,8 @@ minikube service list
 curl http://192.168.49.2:30001/api/active
 curl http://192.168.49.2:30001/api/id/1
 
-# crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
-kubectl port-forward service/api-gpt-be 8086:30001
+# 6crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
+kubectl port-forward service/api-gpt-be 8085:30001
 kubectl port-forward service/api-gpt-frontend 4200:30002
 # ver los logs del pod (logs del proyecto)
 kubectl logs nombre-pod

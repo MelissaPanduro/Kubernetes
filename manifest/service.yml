@@ -1,4 +1,4 @@
-# kubectl apply -f service.yml
+# 5kubectl apply -f service.yml
 apiVersion: v1
 kind: Service
 metadata:
