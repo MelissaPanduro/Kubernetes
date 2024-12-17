@@ -1,4 +1,4 @@
-# kubectl apply -f deployment.yml
+# 2kubectl apply -f deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
