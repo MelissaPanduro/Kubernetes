@@ -1,3 +1,4 @@
+# kubectl apply -f deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-gpt-be
-        image: melissapanduro/backchat  # Reemplaza con tu imagen Docker del backend
+        image: melissapanduro/be_chat  # Reemplaza con tu imagen Docker del backend
         env:
         - name: DATABASE_URL
           valueFrom:
@@ -32,11 +33,11 @@ spec:
             secretKeyRef:
               name: database-credentials
               key: DATABASE_PASSWORD
-        - name: API_KEY
+        - name: RAPIDAPI_KEY
           valueFrom:
             secretKeyRef:
               name: database-credentials
-              key: API_KEY
+              key: RAPIDAPI_KEY
 
 ---
 
@@ -57,7 +58,7 @@ spec:
     spec:
       containers:
       - name: api-gpt-frontend
-        image: melissapanduro/frontchat  # Reemplaza con tu imagen Docker del frontend
+        image: melissapanduro/fe_chat # Reemplaza con tu imagen Docker del frontend
         env:
         - name: API_BACKEND
           valueFrom:
@@ -79,8 +80,8 @@ spec:
             secretKeyRef:
               name: database-credentials
               key: DATABASE_PASSWORD
-        - name: API_KEY
+        - name: RAPIDAPI_KEY
           valueFrom:
             secretKeyRef:
               name: database-credentials
-              key: API_KEY
+              key: RAPIDAPI_KEY
